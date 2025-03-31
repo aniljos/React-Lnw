@@ -12,6 +12,7 @@ function App() {
       <Message text="Hello Vite" color="green"/> */}
       
       <Counter initialCount={5}/>
+      {/* <Counter initialCount={10}/> */}
     </div>
   )
 }

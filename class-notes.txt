@@ -10,3 +10,35 @@ REST API Mock: https://github.com/aniljos/REST-API-Mock
 Babel cdn: https://cdnjs.com/libraries/babel-standalone/7.26.3
 
 Introduction: https://forms.gle/A2CsyCwZMXGb4DLJ7
+
+Scope
+	- let/const
+	- var keyword
+	
+IIFE = Immedialtly invoked function expression
+
+Component props
+	- parameters to components
+	- props always read-only
+	
+State
+	- overloads
+		- set(updatedValue)
+		- set(callback) => function callback(currentValue){return "updated value"}
+	- states updates are asynchronous.
+	- state updates are batched
+		- counter: 5
+		- setCounter(counter + 1); => setCounter(6)
+        - setCounter(counter + 1); => setCounter(6)
+		- setCounter(currentCount => currentCount + 1); => setCounter(invoke the callback) => currentCount=5
+		- setCounter(currentCount => currentCount + 1); => setCounter(invoke the callback) => currentCount=6
+		
+useEffect
+	- mount
+		- API call to be invoked once after the component is rendered.
+		- DOM initialization 
+		- register event handlers on the window or document object
+	- unmount
+		- Cancel any pending api calls
+		- unregister event handlers
+	

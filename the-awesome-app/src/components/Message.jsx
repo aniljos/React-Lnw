@@ -1,6 +1,23 @@
+import {useEffect} from 'react';
+
 function Message(props){
 
+
+    // api call
     console.log("props", props);
+
+    //useEffect(setUpFn, [dependencies])
+
+    //Mount -useEffect(setUpFn, [empty dependency array])
+    useEffect(() => {
+        console.log("Message component mounted...");
+
+        return () => {
+            console.log("Message component unmounted...");
+        }
+
+    }, [])
+
 
     const myJSX = <div>Testing</div>
     return (
