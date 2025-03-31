@@ -1,0 +1,10 @@
+React session March 31st 2025
+
+
+
+Git Url: https://github.com/aniljos/React-Lnw
+REST API Mock: https://github.com/aniljos/REST-API-Mock
+
+Babel cdn: https://cdnjs.com/libraries/babel-standalone/7.26.3
+
+Introduction: https://forms.gle/Zs8jw2A1MBFtwxMi9
