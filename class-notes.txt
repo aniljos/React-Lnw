@@ -46,7 +46,7 @@ useEffect
 		
 forms
 	- controlled inputs
-		-every form control is bound to a state(useState) and handle the onChange event
+		- every form control is bound to a state(useState) and handle the onChange event
 		- reactive form
-	- unclontrolled inputs
+	- uncontrolled inputs
 	
