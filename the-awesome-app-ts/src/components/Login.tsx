@@ -25,6 +25,7 @@ function Login(){
     async function login(evt: MouseEvent){
 
         evt.preventDefault();
+        console.log("username", usernameRef.current?.value);
 
         if(username && password){
             

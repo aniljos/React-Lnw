@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
 import Message from './components/Message';
 import Counter from './components/Counter';
 import Login from './components/Login';
+import ListProducts from './components/ListProducts';
 
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
               <Route path='/' element={<Message text='Hello React'/>}/>
               <Route path='/counter' element={<Counter initialCount={5}/>}/>
               <Route path='/login' element={<Login/>}/>
-              <Route path='/products' element={<div>Products: To be implemented</div>}/>
+              <Route path='/products' element={<ListProducts/>}/>
             </Routes>
         </main>
       </Router>
