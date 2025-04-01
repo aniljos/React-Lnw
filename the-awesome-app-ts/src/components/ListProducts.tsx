@@ -2,11 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Product } from "../model/Product";
 import './ListProducts.css';
+import { useNavigate } from "react-router-dom";
 
 const baseUrl = "http://localhost:9000/products";
 function ListProducts() {
 
     const [products, setProducts] = useState<Product[]>([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -14,6 +16,8 @@ function ListProducts() {
 
     }, [])
     async function fetchProducts() {
+
+       
         try {
 
             const response = await axios.get<Product[]>(baseUrl);
@@ -38,14 +42,18 @@ function ListProducts() {
                 copy_of_products.splice(index, 1);
                 setProducts(copy_of_products);
             }
-
             alert("Deleted product: " + product.id);
 
-        } catch (error) {
+        } catch {
 
             alert("failed to delete product: " + product.id);
         }
+    }
 
+    function editProduct(product: Product){
+
+     
+        navigate(`/products/${product.id}`);
     }
 
     return (
@@ -62,7 +70,7 @@ function ListProducts() {
                             <div>
                                 <button className="btn btn-warning" 
                                             onClick={() => {deleteProduct(product)}}>Delete</button>&nbsp;
-                                <button className="btn btn-info">Edit</button>
+                                <button className="btn btn-info" onClick={() => {editProduct(product)}}>Edit</button>
                             </div>
                         </div>
                     )

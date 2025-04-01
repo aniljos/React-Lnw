@@ -34,6 +34,8 @@ State
         - setCounter(counter + 1); => setCounter(6)
 		- setCounter(currentCount => currentCount + 1); => setCounter(invoke the callback) => currentCount=5
 		- setCounter(currentCount => currentCount + 1); => setCounter(invoke the callback) => currentCount=6
+	- state must be treated as immutable
+		- To change/modify: create a copy, change the copy, set the state
 		
 useEffect
 	- mount
@@ -49,4 +51,16 @@ forms
 		- every form control is bound to a state(useState) and handle the onChange event
 		- reactive form
 	- uncontrolled inputs
+		- reference(useRef) to the input => get/set
 	
+API calls
+	1. XMLHttpRequest object
+	2. Fetch api's 
+	
+CSS
+	- inline => style
+	- reuseable => class
+	
+React router
+	- useNavigate
+	- useParams - url params
