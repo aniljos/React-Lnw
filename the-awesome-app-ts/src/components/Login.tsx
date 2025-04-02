@@ -4,6 +4,7 @@ import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 import { useTitle } from "../hooks/useTitle";
+import { useDispatch } from "react-redux";
 
 function Login(){
 
@@ -13,6 +14,7 @@ function Login(){
     const navigate = useNavigate();
     const usernameRef = useRef<HTMLInputElement>(null);
     useTitle("Login");
+    const dispatch = useDispatch();
 
     useEffect(() => {
         usernameRef.current?.focus();
@@ -44,6 +46,16 @@ function Login(){
             try {
                 
                 const resp = await axios.post(url, {name: username, password});
+                //dispatch to redux
+
+                dispatch({type: "login", payload: {
+
+                    isAuthenticated: true,
+                    username,
+                    accessToken: resp.data.accessToken,
+                    refreshToken: resp.data.refreshToken
+                }})
+
                 console.log("success", resp);
                 navigate("/");
 
@@ -51,6 +63,7 @@ function Login(){
 
                 console.log("error", errResp);
                 setMessage("Invalid credentials");
+                dispatch({type: "logout"});
             }
 
             
