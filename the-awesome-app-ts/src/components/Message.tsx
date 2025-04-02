@@ -4,6 +4,8 @@ type MessageProps = {
     text: string;
     color?: string;
 }
+
+
 function Message(props: MessageProps){
 
 
@@ -35,6 +37,7 @@ function Message(props: MessageProps){
         </div>
     )
 }
+
 
 export default Message;
 

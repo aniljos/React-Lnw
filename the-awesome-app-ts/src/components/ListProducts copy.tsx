@@ -1,22 +1,36 @@
 import axios from "axios";
-import { useState, useCallback, useMemo } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { Product } from "../model/Product";
 import './ListProducts.css';
 import { useNavigate } from "react-router-dom";
 import ProductView from "./ProductView";
 import { useTitle } from "../hooks/useTitle";
-import { useProducts } from "../hooks/useProducts";
 
 const baseUrl = "http://localhost:9000/products";
 function ListProducts() {
 
     
-    const {products, setProducts} = useProducts(baseUrl);
+    const [products, setProducts] = useState<Product[]>([]);
     const navigate = useNavigate();
     const [isMessageVisible, setMessageVisible] = useState(false);
     useTitle("Products");
 
-    
+    useEffect(() => {
+
+        fetchProducts();
+
+    }, [])
+    async function fetchProducts() {
+
+        try {
+            const response = await axios.get<Product[]>(baseUrl);
+            console.log(response.data);
+            setProducts(response.data);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const deleteProduct = useCallback( async function deleteProduct(product: Product){
 
