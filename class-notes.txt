@@ -65,3 +65,14 @@ CSS
 React router
 	- useNavigate
 	- useParams - url params
+	
+Design & Optimization
+	- Components to be smaller(modular)
+		- Segregation of responsibilities, optimize, testing
+	-Optimization
+		- React.memo
+			- caches(memoization) the component
+			- cache is invalidated when the props are changed.
+		
+	- HOC (higher-order component) => Design pattern
+		- An hoc is a function that takes a component and returns a new component.

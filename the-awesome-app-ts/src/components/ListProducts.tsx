@@ -1,14 +1,19 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { Product } from "../model/Product";
 import './ListProducts.css';
 import { useNavigate } from "react-router-dom";
+import ProductView from "./ProductView";
+import { useTitle } from "../hooks/useTitle";
 
 const baseUrl = "http://localhost:9000/products";
 function ListProducts() {
 
+    
     const [products, setProducts] = useState<Product[]>([]);
     const navigate = useNavigate();
+    const [isMessageVisible, setMessageVisible] = useState(false);
+    useTitle("Products");
 
     useEffect(() => {
 
@@ -29,7 +34,7 @@ function ListProducts() {
         }
     }
 
-    async function deleteProduct(product: Product){
+    const deleteProduct = useCallback( async function deleteProduct(product: Product){
 
         try {
             const url = baseUrl + "/" + product.id;
@@ -48,31 +53,57 @@ function ListProducts() {
 
             alert("failed to delete product: " + product.id);
         }
-    }
+    }, [products])
 
-    function editProduct(product: Product){
-
-     
+    const editProduct =  useCallback(function editProductImpl(product: Product){
         navigate(`/products/${product.id}`);
-    }
+    }, [])
+
+    const totalPrice = useMemo(() => {
+
+        console.log("calculating prices...");
+        let total = 0;
+        products.forEach(p => {
+
+            if(p.price)
+                total += p.price;
+        })
+
+        return total
+
+    }, [products])
 
     return (
         <div>
             <h3>Products</h3>
+            <div>Total Price: {totalPrice}</div>
+            {isMessageVisible ? 
+                <div className="alert alert-info">Page to demonstarte component optimization</div>: null}
+
+            <div>
+                <button 
+                    className="btn btn-info" 
+                    onClick={() => setMessageVisible(isVisible => !isVisible)}>Hide/Show</button>
+            </div>    
+
+
             <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center'}}>
                 {products.map(product => {
                     return (
-                        <div key={product.id} className="product">
-                            <p>Id: {product.id}</p>
-                            <p>{product.name}</p>
-                            <p>{product.description}</p>
-                            <p>Price: {product.price}</p>
-                            <div>
-                                <button className="btn btn-warning" 
-                                            onClick={() => {deleteProduct(product)}}>Delete</button>&nbsp;
-                                <button className="btn btn-info" onClick={() => {editProduct(product)}}>Edit</button>
-                            </div>
-                        </div>
+                         <ProductView key={product.id} data={product} 
+                                        onDelete={deleteProduct} onEdit={editProduct} />
+                        
+                        // <div key={product.id} className="product">
+                        //     <p>Id: {product.id}</p>
+                        //     <p>{product.name}</p>
+                        //     <p>{product.description}</p>
+                        //     <p>Price: {product.price}</p>
+                        //     <div>
+                        //         <button className="btn btn-warning" 
+                        //                     onClick={() => {deleteProduct(product)}}>Delete</button>&nbsp;
+                        //         <button className="btn btn-info" onClick={() => {editProduct(product)}}>Edit</button>
+                        //     </div>
+                        // </div>
                     )
                 })}
             </div>

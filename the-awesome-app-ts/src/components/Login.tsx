@@ -3,6 +3,7 @@
 import { ChangeEvent, MouseEvent, useEffect, useRef, useState } from "react";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
+import { useTitle } from "../hooks/useTitle";
 
 function Login(){
 
@@ -11,6 +12,7 @@ function Login(){
     const [message, setMessage] = useState("");
     const navigate = useNavigate();
     const usernameRef = useRef<HTMLInputElement>(null);
+    useTitle("Login");
 
     useEffect(() => {
         usernameRef.current?.focus();
