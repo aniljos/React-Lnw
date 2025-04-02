@@ -12,6 +12,7 @@ Babel cdn: https://cdnjs.com/libraries/babel-standalone/7.26.3
 Introduction: https://forms.gle/A2CsyCwZMXGb4DLJ7
 
 Quiz 1: https://forms.gle/KoLHWoqR9c45a3pK9
+Quiz 2: https://forms.gle/iVvDAzDXf5K3sUjS8
 
 Scope
 	- let/const
