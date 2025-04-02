@@ -73,6 +73,21 @@ Design & Optimization
 		- React.memo
 			- caches(memoization) the component
 			- cache is invalidated when the props are changed.
+		- Hooks
+			- useMemo
+			- useCallback
+	- Design : Modular, reuseable
+		- HOC (higher-order component) => Design pattern
+			- An hoc is a function that takes a component and returns a new component.
+		- Custom Hooks
+			- Modular, reuse
+			
+Redux
+	- Action: an object
+		- The task to execute
+		- { type: "save_token", token: "abc123"}
+		- { type: "clear_token"}
+	- Reducer: a function
+		- receives the action(s) and updates the store
 		
-	- HOC (higher-order component) => Design pattern
-		- An hoc is a function that takes a component and returns a new component.
+		
