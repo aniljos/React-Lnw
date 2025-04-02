@@ -32,6 +32,7 @@ export const authReducer = function(currentState = initialState, action: AuthAct
         return action.payload;
     }
     if(action.type === "logout"){
+        
         return initialState;
     }
 

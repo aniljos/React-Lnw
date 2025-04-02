@@ -57,7 +57,7 @@ function Login(){
                 }})
 
                 console.log("success", resp);
-                navigate("/");
+                navigate("/products");
 
             } catch (errResp) {
 
