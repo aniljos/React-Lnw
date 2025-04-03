@@ -13,6 +13,7 @@ Introduction: https://forms.gle/A2CsyCwZMXGb4DLJ7
 
 Quiz 1: https://forms.gle/KoLHWoqR9c45a3pK9
 Quiz 2: https://forms.gle/iVvDAzDXf5K3sUjS8
+Quiz 3: https://forms.gle/GCCb7bY5VCt5iJfT9
 
 Scope
 	- let/const
@@ -89,5 +90,25 @@ Redux
 		- { type: "clear_token"}
 	- Reducer: a function
 		- receives the action(s) and updates the store
+		- one reducer per store
+			- write multiple reducres and combine to a single reducer
+			
+React-redux
+	- Provider component
+		- integrates the redux store to react component tree.
+	- Hooks
+		- useDispatch: returns the dispatch
+		- useSelector: select a state from redux(subscribe)
+		- useStore: returns a refrence to the store
 		
-		
+Redux	
+	- Action creators: helper methods to create an action
+	- Middleware: intercepts the action before its handled by the reducer
+		- logging, validations, asynchronous operations
+		- asynchronous operations: library => redux-thunk, redux-saga
+	- State is immutable
+		- Pattern to treat state as mutable
+redux toolkit
+	- Generated action creators
+	- Integrates with redux-thunk, redux-saga
+	- State is mutable
