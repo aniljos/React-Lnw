@@ -38,11 +38,17 @@ const slice = createSlice({
 
             const index = state.items.findIndex(item => item.id === action.payload);
             state.items.splice(index, 1);
+        },
+        updateItem: (state, action: PayloadAction<TodoItem>) => {
+
+            const index = state.items.findIndex(item => item.id === action.payload.id);
+            state.items[index] = action.payload;
+
         }
     }
 })
 //action creators
-export const {addItem, deleteItem} = slice.actions;
+export const {addItem, deleteItem, updateItem} = slice.actions;
 //reducer
 export const todoReducer =  slice.reducer;
 

@@ -4,7 +4,8 @@ import Counter from './components/Counter';
 import Login from './components/Login';
 import ListProducts from './components/ListProducts';
 import EditProduct from './components/EditProduct';
-import TodoList from './components/TodoList';
+import TodoListComponent from './components/TodoListComponent';
+//import TodoList from './components/TodoList';
 
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/products' element={<ListProducts/>}/>
               <Route path='/products/:id' element={<EditProduct/>}/>
-              <Route path='/todo' element={<TodoList/>}/>
+              <Route path='/todo' element={<TodoListComponent/>}/>
             </Routes>
         </main>
       </Router>

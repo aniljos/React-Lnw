@@ -83,6 +83,14 @@ Design & Optimization
 		- Custom Hooks
 			- Modular, reuse
 			
+State 
+	- Browser
+		- Cookies
+		- LocalStorage: Persistant, window.localStorage -> setItem, getItem
+		- SessionStorage: Non-persistant, window.sessionStorage -> setItem, getItem
+	- Browser Memory
+		- Redux, react context
+
 Redux
 	- Action: an object
 		- The task to execute
@@ -112,3 +120,6 @@ redux toolkit
 	- Generated action creators
 	- Integrates with redux-thunk, redux-saga
 	- State is mutable
+	
+Redux-persist
+	- Save redux to the local storage
