@@ -4,6 +4,7 @@ import Counter from './components/Counter';
 import Login from './components/Login';
 import ListProducts from './components/ListProducts';
 import EditProduct from './components/EditProduct';
+import TodoList from './components/TodoList';
 
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to="/products">Products</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/todo">Todo</Link>
+              </li>
             </ul>
           </div>
         </nav>
@@ -38,6 +42,7 @@ function App() {
               <Route path='/login' element={<Login/>}/>
               <Route path='/products' element={<ListProducts/>}/>
               <Route path='/products/:id' element={<EditProduct/>}/>
+              <Route path='/todo' element={<TodoList/>}/>
             </Routes>
         </main>
       </Router>
