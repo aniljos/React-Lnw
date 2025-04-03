@@ -4,11 +4,20 @@ import App from './App.tsx'
 import './index.css'
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
+import {AppThemeContextProvider} from './context/AppThemeContext' 
+import { BreadcrumbsContext, initialState } from './context/BreadcrumbsContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      {/* <AppThemeContext.Provider value={initialState}>
+        <App />
+      </AppThemeContext.Provider> */}
+      <AppThemeContextProvider>
+        <BreadcrumbsContext.Provider value={initialState}>
+          <App />
+        </BreadcrumbsContext.Provider>
+      </AppThemeContextProvider>
     </Provider>
   </StrictMode>,
 )

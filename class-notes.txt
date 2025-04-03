@@ -24,6 +24,8 @@ IIFE = Immedialtly invoked function expression
 Component props
 	- parameters to components
 	- props always read-only
+	- <Message text="abc"/>  => props.text
+	- <Message>hello</Message> => props.children
 	
 State
 	- overloads
@@ -100,6 +102,8 @@ Redux
 		- receives the action(s) and updates the store
 		- one reducer per store
 			- write multiple reducres and combine to a single reducer
+	- Store
+		- One per application
 			
 React-redux
 	- Provider component
@@ -123,3 +127,9 @@ redux toolkit
 	
 Redux-persist
 	- Save redux to the local storage
+	
+React Context
+	- Low-level API, we have create layer/library 
+	- Multiple Contexts
+	- React.createContext
+	- Hook: useContext

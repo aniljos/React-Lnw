@@ -1,10 +1,12 @@
-import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Message from './components/Message';
 import Counter from './components/Counter';
 import Login from './components/Login';
 import ListProducts from './components/ListProducts';
 import EditProduct from './components/EditProduct';
 import TodoListComponent from './components/TodoListComponent';
+import Appbar from './components/Appbar';
+import Breadcrumbs from './components/Breadcrumbs';
 //import TodoList from './components/TodoList';
 
 
@@ -13,28 +15,9 @@ function App() {
   return (
     <div className="container-fluid">
       <Router>
-        <nav className="navbar navbar-dark bg-dark">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#">React-Vite</a>
-            <ul className="nav">
-              <li className="nav-item">
-                <Link className="nav-link" to="/">Home</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/counter">Counter</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/login">Login</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/products">Products</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/todo">Todo</Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        
+        <Appbar/>
+        <Breadcrumbs/>
 
         <main>
             <Routes>
