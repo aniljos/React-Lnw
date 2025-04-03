@@ -8,9 +8,23 @@ const allReducers = combineReducers({
    
 })
 
+const logMiddleware = (store) => {
+    return (next) => {
+        return (action) => {
+            console.log("Action dispatched: ", action);
+            console.log("state before: ", store.getState());
+            const result = next(action);
+            console.log("state after: ", store.getState());
+            return result;
+        }
+    }
+}
 export const store = configureStore({
     reducer: allReducers,
-    devTools: true
+    devTools: true,
+    middleware:(middlewares) => {
+        return middlewares().concat(logMiddleware);
+    }
 });
 
 export type AppState = ReturnType<typeof store.getState>;

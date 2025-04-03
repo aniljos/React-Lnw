@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "../redux/store";
-import { useRef, MouseEvent } from "react";
-import { addItem as createAddItemAction, updateItem as createUpdateItemAction } from "../redux/todoReducer"; 
+import { AppDispatch, AppState } from "../redux/store";
+import { useRef, MouseEvent, useEffect } from "react";
+import { addItem as createAddItemAction, updateItem as createUpdateItemAction, fetchTodos } from "../redux/todoReducer"; 
 import { TodoItem } from "../model/TodoItem";
 
 function TodoListComponent() {
@@ -9,7 +9,13 @@ function TodoListComponent() {
     const todos = useSelector((state: AppState) => state.todo);
     const itemIdRef = useRef<HTMLInputElement>(null);
     const itemTextRef = useRef<HTMLInputElement>(null);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+
+        dispatch(fetchTodos());
+
+    }, []);
 
     function saveItem(evt: MouseEvent) {
 
@@ -19,7 +25,8 @@ function TodoListComponent() {
 
         const itemText = itemTextRef.current?.value;
         if(itemId && itemText) {
-            const item = new TodoItem(Number(itemId), itemText, false);
+            //const item = new TodoItem(Number(itemId), itemText, false);
+            const item = {id: Number(itemId), text: itemText, isCompleted: false};
             const action = createAddItemAction(item);
             dispatch(action);
 

@@ -1,12 +1,16 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { TodoItem } from "../model/TodoItem"
+import axios from "axios"
 
 type TodoState = {
-    items: TodoItem[]
+    items: TodoItem[],
+    status: "pending" | "completed" | "rejected"
 }
 
 const initialState: TodoState = {
-    items: []
+    items: [],
+    status: "pending"
+    
 }
 // {type: "add", payload: TodoItem}
 // {type: "delete", id: 1}
@@ -24,6 +28,22 @@ const initialState: TodoState = {
 
 //     return state;
 // }
+
+
+// action creator => return an action which will be handled by the middleware
+export const fetchTodos = createAsyncThunk("todos/fetchTodos", async (_, thunkAPI) => {
+
+    try {
+        const response = await axios.get<TodoItem[]>("http://localhost:9000/todoItems");
+        return response.data;
+
+    } catch (error) {
+        console.log("Error fetching todos: ", error);
+        return thunkAPI.rejectWithValue("Error fetching todos");
+    }
+})
+
+
 
 const slice = createSlice({
 
@@ -45,6 +65,24 @@ const slice = createSlice({
             state.items[index] = action.payload;
 
         }
+    },
+    extraReducers: (builder) => {
+
+        builder.addCase(fetchTodos.fulfilled, (state, action) => {
+            state.items = action.payload;
+            state.status = "completed";
+          
+        });
+        
+        builder.addCase(fetchTodos.rejected, (state) => {
+            state.status = "rejected";
+           
+        });
+        
+        builder.addCase(fetchTodos.pending, (state) => {
+            state.status = "pending";
+        })
+
     }
 })
 //action creators
