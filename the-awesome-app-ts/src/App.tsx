@@ -1,20 +1,24 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Message from './components/Message';
 import Counter from './components/Counter';
-import Login from './components/Login';
+
+//import Login from './components/Login';
+
 import ListProducts from './components/ListProducts';
 import EditProduct from './components/EditProduct';
 import TodoListComponent from './components/TodoListComponent';
 import Appbar from './components/Appbar';
 import Breadcrumbs from './components/Breadcrumbs';
+import React from 'react';
 //import TodoList from './components/TodoList';
 
+const Login = React.lazy(() => import('./components/Login'));
 
 function App() {
 
   return (
     <div className="container-fluid">
-      <Router>
+      <Router basename='/react-vite/'>
         
         <Appbar/>
         <Breadcrumbs/>

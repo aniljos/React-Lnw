@@ -5,6 +5,7 @@ import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 import { useTitle } from "../hooks/useTitle";
 import { useDispatch } from "react-redux";
+import { Button } from "react-bootstrap";
 
 function Login(){
 
@@ -93,7 +94,8 @@ function Login(){
                 </div>
                 <br />
                 <div>
-                    <button className="btn btn-success" onClick={login}>Login</button>
+                    {/* <button className="btn btn-success" onClick={login}>Login</button> */}
+                    <Button variant="danger" onClick={login}>Login</Button>
                 </div>
             </form>
 

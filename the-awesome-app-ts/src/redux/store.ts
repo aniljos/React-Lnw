@@ -8,9 +8,9 @@ const allReducers = combineReducers({
    
 })
 
-const logMiddleware = (store) => {
-    return (next) => {
-        return (action) => {
+const logMiddleware = (store:any) => {
+    return (next:any) => {
+        return (action: any) => {
             console.log("Action dispatched: ", action);
             console.log("state before: ", store.getState());
             const result = next(action);

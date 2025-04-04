@@ -1,14 +1,24 @@
-import { useEffect} from 'react';
+import { useEffect, useImperativeHandle} from 'react';
 import { useBreadcrump } from '../hooks/useBreadcrumps';
 
 
 type MessageProps = {
     text: string;
     color?: string;
+    ref?: any
 }
-
-
 function Message(props: MessageProps){
+
+    useImperativeHandle(props.ref, () => {
+
+        return {
+            text: props.text,
+            color: props.color,
+            show: ()=>{
+                alert("Message: " + props.text);
+            }
+        }
+    });
 
     useBreadcrump({label: "Message", path: "/"});
     // api call
