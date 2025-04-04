@@ -1,4 +1,6 @@
-import {useEffect} from 'react';
+import { useEffect} from 'react';
+import { useBreadcrump } from '../hooks/useBreadcrumps';
+
 
 type MessageProps = {
     text: string;
@@ -8,14 +10,20 @@ type MessageProps = {
 
 function Message(props: MessageProps){
 
-
+    useBreadcrump({label: "Message", path: "/"});
     // api call
     console.log("props", props);
+
+    
 
     //useEffect(setUpFn, [dependencies])
 
     //Mount -useEffect(setUpFn, [empty dependency array])
     useEffect(() => {
+
+       
+
+      
         console.log("Message component mounted...");
 
         return () => {

@@ -5,7 +5,7 @@ import './index.css'
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
 import {AppThemeContextProvider} from './context/AppThemeContext' 
-import { BreadcrumbsContext, initialState } from './context/BreadcrumbsContext.tsx'
+import {  BreadcrumpContextProvider } from './context/BreadcrumbsContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -14,9 +14,9 @@ createRoot(document.getElementById('root')!).render(
         <App />
       </AppThemeContext.Provider> */}
       <AppThemeContextProvider>
-        <BreadcrumbsContext.Provider value={initialState}>
+        <BreadcrumpContextProvider>
           <App />
-        </BreadcrumbsContext.Provider>
+          </BreadcrumpContextProvider>
       </AppThemeContextProvider>
     </Provider>
   </StrictMode>,
